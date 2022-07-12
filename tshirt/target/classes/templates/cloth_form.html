@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body th:style="'background: url(/images/back.jpg) no-repeat center center fixed;'">
+<div class="container-fluid">
+    <div class="text-center"><h2 style="color: white">[[${pageTitle}]]</h2></div>
+
+    <form th:action="@{/clothes/save}" method="post" th:object="${cloth}"
+          style="max-width: 500px; margin: 0 auto; background: black; -webkit-text-fill-color: white">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="border border-secondary rounded p-3">
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Item Code:</label>
+                <div class="col-sm-8">
+                    <input type="text" style="background: black" th:field="*{item_Code}" class="form-control" required maxlength="5" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Catogary:</label>
+                <div class="col-sm-8">
+                    <input type="text" style="background: black" th:field="*{catogary}" class="form-control" required maxlength="10" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Color:</label>
+                <div class="col-sm-8">
+                    <input type="text" style="background: black" th:field="*{color}" class="form-control" required maxlength="10" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Price</label>
+                <div class="col-sm-8">
+                    <input type="text" style="background: black" th:field="*{price}" class="form-control" required maxlength="10" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Size</label>
+                <div class="col-sm-8">
+                    <input type="text" style="background: black" th:field="*{size}" class="form-control" required maxlength="5" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Brand</label>
+                <div class="col-sm-8">
+                    <select style="-webkit-text-fill-color: black;" th:field="*{brand}">
+                        <option value="">choose the brand.. </option>
+                        <option style="-webkit-text-fill-color: black;" th:each="bra: ${listBrands}" th:value="${bra.name}" th:text="${bra.name}" />
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Save</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<script type="text/javascript">
+    function cancelForm(){
+        window.location = "[[@{/clothes}]]";
+    }
+</script>
+</body>
+</html>
+

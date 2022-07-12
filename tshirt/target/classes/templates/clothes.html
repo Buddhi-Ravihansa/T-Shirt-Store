@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Clothes</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body th:style="'background: url(/images/back6.jpeg) no-repeat center center fixed;'">
+<div class="container-fluid text-center">
+    <div><h2>Collection</h2></div>
+    <div>
+        <div class="m-2">
+           <button style="background: black; margin-left: 80%;"><a class="h3" style="color: white" th:href="@{/clothes/new}">Add New Clothes+</a></button>
+        </div>
+    </div>
+
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+
+    <div>
+        <table class="table table-bordered" style="background: black; -webkit-text-fill-color: white; width: 80%; margin-left: 10%">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Item Code</th>
+                <th>Catogary</th>
+                <th>Color</th>
+                <th>Price</th>
+                <th>Size</th>
+                <th>Brand</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="cloth: ${listClothes}">
+                <tr>
+                    <td>[[${cloth.id}]]</td>
+                    <td>[[${cloth.item_Code}]]</td>
+                    <td>[[${cloth.catogary}]]</td>
+                    <td>[[${cloth.color}]]</td>
+                    <td>[[${cloth.price}]]</td>
+                    <td>[[${cloth.size}]]</td>
+                    <td>[[${cloth.brand}]]</td>
+                    <td>
+                        <a class="h4 mr-3 " th:href="@{'/clothes/edit/' + ${cloth.id}}">Edit</a>
+                        <a class="h4 mr-3" th:href="@{'/clothes/delete/' + ${cloth.id}}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

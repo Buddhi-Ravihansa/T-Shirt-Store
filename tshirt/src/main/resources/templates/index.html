@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to My Application</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body th:style="'background: url(/images/back6.jpeg) no-repeat center center fixed;'">
+<div>
+    <div style="font-size: 100px; margin-left: 16%; margin-top: 5%">Welcome</div>
+<div style="margin-left: 140px; font-size: 40px;">To The world Biggest Clothing Store..</div>
+    <div style="font-family:Brush Script MT, Brush Script Std, cursive; margin-left: 120px; margin-top: 5%; font-size: 120px;">The ORIGINAL</div>
+
+    <button style="margin-top: 10%; margin-left: 3%; background: black;"><a class="h2" style="color: white" th:href="@{/users}">Manage Users</a></button>
+    <button style="background: white; margin-left: 2%;"><a class="h2" style="color: black" th:href="@{/clothes}">Manage Clothes</a></button>
+</div>
+</body>
+</html>
